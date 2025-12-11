@@ -1,8 +1,8 @@
 import { useState, useMemo } from "react";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
-import { trpc } from "@/lib/trpc";
-import { Filter, Loader2 } from "lucide-react";
+// import { trpc } from "@/lib/trpc";
+import { Filter } from "lucide-react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { Link } from "wouter";
@@ -16,15 +16,54 @@ const CATEGORIES = [
   "Consultoria",
 ];
 
+// Static portfolio data for static deployment
+const STATIC_PROJECTS = [
+  {
+    id: 1,
+    title: "Painel Elétrico Industrial",
+    category: "Painéis Elétricos",
+    description: "Montagem e configuração de painel elétrico de alta potência para indústria de alimentos.",
+    results: "Redução de 20% no consumo de energia com otimização de circuitos.",
+    featured: 1,
+    imageUrl: "/portfolio-1.jpg",
+  },
+  {
+    id: 2,
+    title: "Manutenção Preventiva - Fábrica Beta",
+    category: "Manutenção Industrial",
+    description: "Programa de manutenção preventiva em sistemas elétricos de grande porte.",
+    results: "Zero paradas não planejadas por 12 meses consecutivos.",
+    featured: 0,
+    imageUrl: "/portfolio-2.jpg",
+  },
+  {
+    id: 3,
+    title: "Laudo Técnico NR-10",
+    category: "Laudos Técnicos",
+    description: "Inspeção completa e laudo de conformidade com normas NR-10 e SPDA.",
+    results: "Empresa aprovada em auditoria de segurança com recomendações implementadas.",
+    featured: 0,
+    imageUrl: "/portfolio-3.jpg",
+  },
+  {
+    id: 4,
+    title: "Iluminação Residencial Moderna",
+    category: "Iluminação Residencial",
+    description: "Projeto de iluminação LED com automação para residência de luxo.",
+    results: "Redução de 60% no consumo de energia com iluminação de alta qualidade.",
+    featured: 1,
+    imageUrl: "/portfolio-4.jpg",
+  },
+];
+
 export default function PortfolioDynamic() {
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
-  const projectsQuery = trpc.portfolio.list.useQuery();
+  // const projectsQuery = trpc.portfolio.list.useQuery();
 
   const filteredProjects = useMemo(() => {
-    if (!projectsQuery.data) return [];
-    if (!selectedCategory) return projectsQuery.data;
-    return projectsQuery.data.filter((p) => p.category === selectedCategory);
-  }, [projectsQuery.data, selectedCategory]);
+    if (!selectedCategory) return STATIC_PROJECTS;
+    return STATIC_PROJECTS.filter((p) => p.category === selectedCategory);
+  }, [selectedCategory]);
 
   return (
     <div className="min-h-screen flex flex-col bg-background">
@@ -75,11 +114,7 @@ export default function PortfolioDynamic() {
         {/* Projects Grid */}
         <section className="py-16 md:py-24">
           <div className="container">
-            {projectsQuery.isLoading ? (
-              <div className="flex justify-center items-center py-24">
-                <Loader2 className="w-8 h-8 animate-spin text-primary" />
-              </div>
-            ) : filteredProjects.length > 0 ? (
+            {filteredProjects.length > 0 ? (
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 {filteredProjects.map((project) => (
                   <Card
