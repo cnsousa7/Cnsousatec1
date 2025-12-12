@@ -203,7 +203,7 @@ export default function Contact() {
               <div className="space-y-6">
                 {/* WhatsApp Card */}
                 <a
-                  href="https://wa.me/5589994055190?text=Olá%2C%20gostaria%20de%20um%20orçamento%20para%20serviços%20elétricos."
+                  href="https://wa.me/5561992743428?text=Olá%2C%20gostaria%20de%20um%20orçamento%20para%20serviços%20elétricos."
                   target="_blank"
                   rel="noopener noreferrer"
                   className="block bg-gradient-to-br from-green-400 to-green-600 text-white rounded-lg shadow-lg p-8 hover:shadow-xl transition-shadow"
