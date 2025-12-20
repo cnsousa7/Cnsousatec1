@@ -22,7 +22,7 @@ export default function Header() {
           <Link href="/">
             <div className="flex items-center gap-3 cursor-pointer">
               <img
-                src="/logo-cnsousatec-glow.png"
+                src="/Cnsousatec1/logo-cnsousatec-glow.png"
                 alt="CNSOUSATEC Logo"
                 className="h-12 w-12 rounded-lg object-cover shadow-md"
               />
