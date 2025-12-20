@@ -86,7 +86,7 @@ export default function Home() {
               {/* Logo */}
               <div className="flex justify-center md:justify-start">
                 <img
-                  src="/logo-cnsousatec.jpg"
+                  src="/Cnsousatec1/logo-cnsousatec-glow.png"
                   alt="CNSOUSATEC Logo"
                   className="h-64 w-64 rounded-xl object-cover shadow-2xl"
                 />
