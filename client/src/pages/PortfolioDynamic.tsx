@@ -25,7 +25,7 @@ const STATIC_PROJECTS = [
     description: "Montagem e configuração de painel elétrico de alta potência para indústria de alimentos.",
     results: "Redução de 20% no consumo de energia com otimização de circuitos.",
     featured: 1,
-    imageUrl: "portfolio-paineis.jpg",
+    imageUrl: "/Cnsousatec1/portfolio-paineis.jpg",
   },
   {
     id: 2,
@@ -34,7 +34,7 @@ const STATIC_PROJECTS = [
     description: "Programa de manutenção preventiva em sistemas elétricos de grande porte.",
     results: "Zero paradas não planejadas por 12 meses consecutivos.",
     featured: 0,
-    imageUrl: "portfolio-manutencao.jpg",
+    imageUrl: "/Cnsousatec1/portfolio-manutencao.jpg",
   },
   {
     id: 3,
@@ -43,7 +43,7 @@ const STATIC_PROJECTS = [
     description: "Inspeção completa e laudo de conformidade com normas NR-10 e SPDA.",
     results: "Empresa aprovada em auditoria de segurança com recomendações implementadas.",
     featured: 0,
-    imageUrl: "portfolio-laudos.jpg",
+    imageUrl: "/Cnsousatec1/portfolio-laudos.jpg",
   },
   {
     id: 4,
@@ -52,7 +52,7 @@ const STATIC_PROJECTS = [
     description: "Projeto de iluminação LED com automação para residência de luxo.",
     results: "Redução de 60% no consumo de energia com iluminação de alta qualidade.",
     featured: 1,
-    imageUrl: "portfolio-iluminacao.jpg",
+    imageUrl: "/Cnsousatec1/portfolio-iluminacao.jpg",
   },
 ];
 
