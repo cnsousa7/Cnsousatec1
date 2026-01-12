@@ -24,7 +24,7 @@ export default function Header() {
               <img
                 src="logo-cnsousatec-glow.png"
                 alt="CNSOUSATEC Logo"
-                className="h-12 w-12 rounded-lg object-cover shadow-md"
+                className="h-14 w-auto rounded-lg shadow-md"
               />
               <div className="hidden sm:block">
                 <h1 className="text-primary font-bold text-lg">CNSOUSATEC</h1>

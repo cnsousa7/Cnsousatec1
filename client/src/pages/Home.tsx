@@ -88,7 +88,7 @@ export default function Home() {
                 <img
                   src="logo-cnsousatec-glow.png"
                   alt="CNSOUSATEC Logo"
-                  className="h-64 w-64 rounded-xl object-cover shadow-2xl"
+                  className="h-72 w-auto rounded-xl shadow-2xl"
                 />
               </div>
               {/* Content */}
