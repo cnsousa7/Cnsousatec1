@@ -11,6 +11,7 @@ import {
   Wrench,
   CheckCircle,
   ArrowRight,
+  Droplets,
 } from "lucide-react";
 
 const testimonials = [
@@ -60,9 +61,9 @@ const services = [
     description: "Serviços de manutenção preventiva e corretiva para sistemas elétricos.",
   },
   {
-    icon: Shield,
-    title: "Laudos Técnicos",
-    description: "Inspeções, laudos NR-10, SPDA e conformidade com normas técnicas.",
+    icon: Droplets,
+    title: "Manutenções Hidráulicas",
+    description: "Serviços completos de reparo, instalação e manutenção em sistemas hidráulicos.",
   },
   {
     icon: Lightbulb,

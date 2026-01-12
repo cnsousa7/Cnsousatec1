@@ -9,6 +9,7 @@ import {
   Wrench,
   CheckCircle,
   ArrowRight,
+  Droplets,
 } from "lucide-react";
 
 const servicesDetail = [
@@ -42,16 +43,16 @@ const servicesDetail = [
   },
   {
     id: 3,
-    icon: Shield,
-    title: "Laudos Técnicos",
-    shortDesc: "Inspeções e conformidade normativa",
+    icon: Droplets,
+    title: "Manutenções Hidráulicas",
+    shortDesc: "Reparos e instalações hidráulicas",
     fullDesc:
-      "Elaboração de laudos técnicos conforme NR-10, SPDA, e outras normas regulamentadoras. Garantimos documentação completa e conformidade legal.",
+      "Serviços especializados em sistemas hidráulicos, incluindo detecção de vazamentos, reparos em tubulações, instalação de louças e metais, e manutenção preventiva.",
     benefits: [
-      "Conformidade com legislação",
-      "Documentação técnica completa",
-      "Inspeções periódicas",
-      "Certificação profissional",
+      "Detecção precisa de vazamentos",
+      "Reparos rápidos e limpos",
+      "Instalações de alta qualidade",
+      "Economia de água e recursos",
     ],
   },
   {

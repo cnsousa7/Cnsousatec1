@@ -10,7 +10,7 @@ import { Link } from "wouter";
 const CATEGORIES = [
   "Painéis Elétricos",
   "Manutenção Industrial",
-  "Laudos Técnicos",
+  "Manutenções Hidráulicas",
   "Iluminação Residencial",
   "Serviços Eletrônicos",
   "Consultoria",
@@ -38,10 +38,10 @@ const STATIC_PROJECTS = [
   },
   {
     id: 3,
-    title: "Laudo Técnico NR-10",
-    category: "Laudos Técnicos",
-    description: "Inspeção completa e laudo de conformidade com normas NR-10 e SPDA.",
-    results: "Empresa aprovada em auditoria de segurança com recomendações implementadas.",
+    title: "Reforma Hidráulica Predial",
+    category: "Manutenções Hidráulicas",
+    description: "Substituição completa de barriletes e colunas de água em edifício residencial.",
+    results: "Eliminação de vazamentos crônicos e melhoria na pressão da água em todos os andares.",
     featured: 0,
     imageUrl: "/portfolio-laudos.jpg",
   },
