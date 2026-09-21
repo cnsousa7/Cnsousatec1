@@ -10,10 +10,12 @@ import Footer from "@/components/Footer";
 
 export default function AdminTestimonials() {
   const { user, isAuthenticated } = useAuth();
-  const [filter, setFilter] = useState<"pending" | "approved" | "rejected" | "all">("pending");
+  const [filter, setFilter] = useState<
+    "pending" | "approved" | "rejected" | "all"
+  >("pending");
 
   const testimonialsQuery = trpc.testimonials.listAll.useQuery(undefined, {
-    enabled: isAuthenticated && user?.role === 'admin',
+    enabled: isAuthenticated && user?.role === "admin",
   });
 
   const approveTestimonialMutation = trpc.testimonials.approve.useMutation({
@@ -36,7 +38,7 @@ export default function AdminTestimonials() {
     },
   });
 
-  if (!isAuthenticated) {
+  if (!isAuthenticated || !user) {
     return (
       <div className="min-h-screen flex flex-col bg-background">
         <Header />
@@ -72,10 +74,11 @@ export default function AdminTestimonials() {
     );
   }
 
-  const filteredTestimonials = testimonialsQuery.data?.filter((t) => {
-    if (filter === "all") return true;
-    return t.status === filter;
-  }) || [];
+  const filteredTestimonials =
+    testimonialsQuery.data?.filter(t => {
+      if (filter === "all") return true;
+      return t.status === filter;
+    }) || [];
 
   return (
     <div className="min-h-screen flex flex-col bg-background">
@@ -90,19 +93,21 @@ export default function AdminTestimonials() {
 
             {/* Filter Tabs */}
             <div className="flex gap-4 mb-8 flex-wrap">
-              {(["pending", "approved", "rejected", "all"] as const).map((status) => (
-                <Button
-                  key={status}
-                  variant={filter === status ? "default" : "outline"}
-                  onClick={() => setFilter(status)}
-                  className="capitalize"
-                >
-                  {status === "pending" && "Pendentes"}
-                  {status === "approved" && "Aprovados"}
-                  {status === "rejected" && "Rejeitados"}
-                  {status === "all" && "Todos"}
-                </Button>
-              ))}
+              {(["pending", "approved", "rejected", "all"] as const).map(
+                status => (
+                  <Button
+                    key={status}
+                    variant={filter === status ? "default" : "outline"}
+                    onClick={() => setFilter(status)}
+                    className="capitalize"
+                  >
+                    {status === "pending" && "Pendentes"}
+                    {status === "approved" && "Aprovados"}
+                    {status === "rejected" && "Rejeitados"}
+                    {status === "all" && "Todos"}
+                  </Button>
+                )
+              )}
             </div>
 
             {/* Testimonials List */}
@@ -110,7 +115,7 @@ export default function AdminTestimonials() {
               <p className="text-muted-foreground">Carregando depoimentos...</p>
             ) : filteredTestimonials.length > 0 ? (
               <div className="space-y-6">
-                {filteredTestimonials.map((testimonial) => (
+                {filteredTestimonials.map(testimonial => (
                   <Card key={testimonial.id} className="p-6">
                     <div className="flex items-start justify-between mb-4">
                       <div className="flex-1">
@@ -122,13 +127,15 @@ export default function AdminTestimonials() {
                         </p>
                       </div>
                       <div className="flex gap-1">
-                        {Array.from({ length: testimonial.rating }).map((_, i) => (
-                          <Star
-                            key={i}
-                            size={16}
-                            className="fill-accent text-accent"
-                          />
-                        ))}
+                        {Array.from({ length: testimonial.rating }).map(
+                          (_, i) => (
+                            <Star
+                              key={i}
+                              size={16}
+                              className="fill-accent text-accent"
+                            />
+                          )
+                        )}
                       </div>
                     </div>
 

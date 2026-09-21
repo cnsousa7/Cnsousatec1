@@ -2,8 +2,6 @@ import { Link } from "wouter";
 import { Button } from "@/components/ui/button";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import TestimonialCarousel from "@/components/TestimonialCarousel";
-import { useAuth } from "@/_core/hooks/useAuth";
 import {
   Zap,
   Lightbulb,
@@ -14,67 +12,34 @@ import {
   Droplets,
 } from "lucide-react";
 
-const testimonials = [
-  {
-    id: 1,
-    name: "João Silva",
-    company: "Indústria Alfa",
-    service: "Painéis Elétricos",
-    text: "A manutenção dos painéis elétricos foi realizada com excelência e no prazo. Profissionais altamente qualificados. Reduzimos em 15% os custos com energia reativa.",
-    rating: 5,
-  },
-  {
-    id: 2,
-    name: "Maria Santos",
-    company: "Comércio Beta",
-    service: "Iluminação Residencial",
-    text: "Projeto de iluminação impecável! A equipe entendeu perfeitamente nossas necessidades e entregou um resultado que superou as expectativas. Recomendo!",
-    rating: 5,
-  },
-  {
-    id: 3,
-    name: "Carlos Oliveira",
-    company: "Empresa Gamma",
-    service: "Laudos Técnicos",
-    text: "Laudo técnico completo e detalhado. A CNSOUSATEC demonstrou profundo conhecimento das normas. Muito satisfeito com o atendimento.",
-    rating: 5,
-  },
-  {
-    id: 4,
-    name: "Ana Costa",
-    company: "Indústria Delta",
-    service: "Manutenção Industrial",
-    text: "Manutenção preventiva de excelente qualidade. Evitou paradas não planejadas na produção. Parceria confiável!",
-    rating: 5,
-  },
-];
-
 const services = [
   {
     icon: Zap,
     title: "Painéis Elétricos",
-    description: "Montagem, manutenção e adequação de painéis elétricos de alta performance.",
+    description:
+      "Montagem, manutenção e adequação de painéis elétricos de alta performance.",
   },
   {
     icon: Wrench,
     title: "Manutenção Industrial",
-    description: "Serviços de manutenção preventiva e corretiva para sistemas elétricos.",
+    description:
+      "Serviços de manutenção preventiva e corretiva para sistemas elétricos.",
   },
   {
     icon: Droplets,
     title: "Manutenções Hidráulicas",
-    description: "Serviços completos de reparo, instalação e manutenção em sistemas hidráulicos.",
+    description:
+      "Serviços completos de reparo, instalação e manutenção em sistemas hidráulicos.",
   },
   {
     icon: Lightbulb,
     title: "Iluminação Residencial",
-    description: "Projetos e instalação de iluminação moderna e eficiente para residências.",
+    description:
+      "Projetos e instalação de iluminação moderna e eficiente para residências.",
   },
 ];
 
 export default function Home() {
-  const { user, loading, error, isAuthenticated, logout } = useAuth();
-
   return (
     <div className="min-h-screen flex flex-col bg-background">
       <Header />
@@ -87,8 +52,11 @@ export default function Home() {
               {/* Logo */}
               <div className="flex justify-center md:justify-start">
                 <img
-                  src="logo-cnsousatec-glow.png"
-                  alt="CNSOUSATEC Logo"
+                  src="/logo-cnsousatec-glow.png"
+                  alt="Logo CNSOUSATEC"
+                  width="288"
+                  height="288"
+                  decoding="async"
                   className="h-72 w-auto rounded-xl shadow-2xl"
                 />
               </div>
@@ -98,7 +66,8 @@ export default function Home() {
                   Soluções Técnicas em Elétrica e Eletrônica
                 </h1>
                 <p className="text-lg md:text-xl mb-8 opacity-95">
-                  Expertise, segurança e inovação para seus projetos elétricos. Confie em profissionais qualificados com certificações NR-10 e CREA.
+                  Manutenção elétrica, hidráulica e eletrônica para residências,
+                  comércios e empresas em Brasília e no Distrito Federal.
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4">
                   <Link href="/contato">
@@ -140,7 +109,7 @@ export default function Home() {
                 {
                   icon: Shield,
                   title: "Segurança",
-                  desc: "Profissionais certificados NR-10 e CREA",
+                  desc: "Atendimento técnico para sua necessidade",
                 },
                 {
                   icon: Zap,
@@ -150,7 +119,7 @@ export default function Home() {
                 {
                   icon: CheckCircle,
                   title: "Qualidade",
-                  desc: "Trabalho garantido e dentro do prazo",
+                  desc: "Serviço orientado ao problema apresentado",
                 },
                 {
                   icon: Lightbulb,
@@ -209,19 +178,51 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Testimonials Section */}
-        <section className="py-16 md:py-24 bg-white">
+        {/* FAQ Section */}
+        <section
+          className="py-16 md:py-24 bg-white"
+          aria-labelledby="faq-title"
+        >
           <div className="container">
-            <h2 className="text-3xl md:text-4xl font-bold text-center mb-12 text-primary">
-              O Que Nossos Clientes Dizem
+            <h2
+              id="faq-title"
+              className="text-3xl md:text-4xl font-bold text-center mb-12 text-primary"
+            >
+              Perguntas frequentes
             </h2>
-            <TestimonialCarousel testimonials={testimonials} />
-            <div className="text-center mt-8">
-              <Link href="/depoimentos">
-                <Button variant="outline" className="border-primary text-primary">
-                  Ver Todos os Depoimentos
-                </Button>
-              </Link>
+            <div className="max-w-3xl mx-auto space-y-4">
+              {[
+                [
+                  "Quais serviços a Cnsousatec oferece?",
+                  "A empresa apresenta serviços de manutenção elétrica, hidráulica e eletrônica, além de suporte técnico especializado.",
+                ],
+                [
+                  "Em qual região o atendimento está disponível?",
+                  "O atendimento informado pela empresa contempla Brasília, o Distrito Federal e o entorno de Goiás. Confirme a disponibilidade para o seu endereço ao solicitar o orçamento.",
+                ],
+                [
+                  "Como solicitar um orçamento?",
+                  "Você pode usar o formulário de contato ou falar diretamente pelo WhatsApp e descrever o serviço necessário.",
+                ],
+                [
+                  "É possível solicitar atendimento para uma emergência?",
+                  "A comunicação atual da empresa informa atendimento técnico 24h. Confirme as condições do atendimento no contato inicial.",
+                ],
+                [
+                  "A empresa realiza manutenção hidráulica?",
+                  "Sim. A manutenção hidráulica está entre os serviços apresentados pela Cnsousatec.",
+                ],
+              ].map(([question, answer]) => (
+                <details
+                  key={question}
+                  className="rounded-lg border border-border p-5"
+                >
+                  <summary className="cursor-pointer font-bold text-primary">
+                    {question}
+                  </summary>
+                  <p className="mt-3 text-muted-foreground">{answer}</p>
+                </details>
+              ))}
             </div>
           </div>
         </section>
@@ -233,7 +234,8 @@ export default function Home() {
               Pronto para Começar?
             </h2>
             <p className="text-lg mb-8 max-w-2xl mx-auto opacity-95">
-              Entre em contato conosco hoje mesmo e descubra como podemos ajudar com suas necessidades elétricas.
+              Entre em contato conosco hoje mesmo e descubra como podemos ajudar
+              com suas necessidades elétricas.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link href="/contato">
@@ -244,10 +246,7 @@ export default function Home() {
                   Solicitar Orçamento
                 </Button>
               </Link>
-              <a
-                href="tel:+5561992743428"
-                className="inline-block"
-              >
+              <a href="tel:+5561992743428" className="inline-block">
                 <Button
                   size="lg"
                   variant="outline"

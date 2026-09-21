@@ -1,75 +1,30 @@
-// import { getLoginUrl } from "@/const";
-// import { trpc } from "@/lib/trpc";
-// import { TRPCClientError } from "@trpc/client";
-import { useCallback, useEffect, useMemo } from "react";
+import { useCallback, useMemo } from "react";
 
 type UseAuthOptions = {
   redirectOnUnauthenticated?: boolean;
   redirectPath?: string;
 };
 
-// NOTE: useAuth is disabled for static deployment on GitHub Pages
-export function useAuth(options?: UseAuthOptions) {
-  // const { redirectOnUnauthenticated = false, redirectPath = getLoginUrl() } =
-  //   options ?? {};
-  // const utils = trpc.useUtils();
+type StaticUser = {
+  id: number;
+  name: string;
+  email: string;
+  role: "admin" | "user";
+};
 
-  // const meQuery = trpc.auth.me.useQuery(undefined, {
-  //   retry: false,
-  //   refetchOnWindowFocus: false,
-  // });
+// Autenticação permanece desativada para a publicação estática no GitHub Pages.
+export function useAuth(_options?: UseAuthOptions) {
+  const logout = useCallback(async () => undefined, []);
 
-  // const logoutMutation = trpc.auth.logout.useMutation({
-  //   onSuccess: () => {
-  //     utils.auth.me.setData(undefined, null);
-  //   },
-  // });
-
-  const logout = useCallback(async () => {
-    // try {
-    //   await logoutMutation.mutateAsync();
-    // } catch (error: unknown) {
-    //   if (
-    //     error instanceof TRPCClientError &&
-    //     error.data?.code === "UNAUTHORIZED"
-    //   ) {
-    //     return;
-    //   }
-    //   throw error;
-    // } finally {
-    //   utils.auth.me.setData(undefined, null);
-    //   await utils.auth.me.invalidate();
-    // }
-  }, []);
-
-  const state = useMemo(() => {
-    // localStorage.setItem(
-    //   "manus-runtime-user-info",
-    //   JSON.stringify(meQuery.data)
-    // );
-    return {
-      user: null,
+  const state = useMemo(
+    () => ({
+      user: null as StaticUser | null,
       loading: false,
-      error: null,
+      error: null as Error | null,
       isAuthenticated: false,
-    };
-  }, []);
-
-  // useEffect(() => {
-  //   if (!redirectOnUnauthenticated) return;
-  //   if (meQuery.isLoading || logoutMutation.isPending) return;
-  //   if (state.user) return;
-  //   if (typeof window === "undefined") return;
-  //   if (window.location.pathname === redirectPath) return;
-
-  //   window.location.href = redirectPath
-  // }, [
-  //   redirectOnUnauthenticated,
-  //   redirectPath,
-  //   logoutMutation.isPending,
-  //   meQuery.isLoading,
-  //   state.user,
-  // ]);
+    }),
+    []
+  );
 
   return {
     ...state,
