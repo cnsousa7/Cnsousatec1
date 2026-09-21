@@ -81,7 +81,7 @@ Foram modificados `client/index.html`, `client/src/App.tsx`, `client/src/_core/h
 
 ## G. Commits e Pull Request
 
-A branch de trabalho foi criada a partir do commit inicial informado acima. O commit final e o Pull Request serão registrados após o commit local e o push da branch. A publicação em `main` não foi realizada automaticamente.
+ A branch de trabalho foi criada a partir do commit inicial informado acima. O commit final é `05f09cfa29d6a5e5d9da737b9b8cbdad9247214b`. A branch foi enviada ao GitHub e o [Pull Request #1][7] foi aberto contra `main`. A publicação em `main` não foi realizada automaticamente.
 
 ## H. Validação externa pendente
 
@@ -95,3 +95,4 @@ As validações externas recomendadas são [PageSpeed Insights][3], [Google Rich
 [4]: https://search.google.com/test/rich-results "Google Rich Results Test"
 [5]: https://validator.schema.org/ "Schema.org Validator"
 [6]: https://github.com/cnsousa7/Cnsousatec1/actions "GitHub Actions do repositório"
+[7]: https://github.com/cnsousa7/Cnsousatec1/pull/1 "Pull Request #1 — auditoria e otimização do site"
