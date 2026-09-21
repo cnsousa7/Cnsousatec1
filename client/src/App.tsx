@@ -13,6 +13,7 @@ import About from "./pages/About";
 import Contact from "./pages/Contact";
 import Admin from "./pages/Admin";
 import AdminTestimonials from "./pages/AdminTestimonials";
+import Seo from "./components/Seo";
 
 function AppRouter() {
   // make sure to consider if you need authentication for certain routes
@@ -48,6 +49,7 @@ function App() {
         <TooltipProvider>
           <Toaster />
           <Router hook={useHashLocation}>
+            <Seo />
             <AppRouter />
           </Router>
         </TooltipProvider>

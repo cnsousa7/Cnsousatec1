@@ -23,8 +23,7 @@ const servicesDetail = [
     benefits: [
       "Redução de custos operacionais",
       "Aumento da eficiência energética",
-      "Conformidade com normas NR-10",
-      "Atendimento técnico 24/7",
+      "Avaliação técnica da necessidade",
     ],
   },
   {
@@ -38,7 +37,7 @@ const servicesDetail = [
       "Prevenção de paradas não planejadas",
       "Diagnóstico técnico detalhado",
       "Equipe especializada",
-      "Relatórios periódicos",
+      "Orientação sobre a solução indicada",
     ],
   },
   {
@@ -66,7 +65,7 @@ const servicesDetail = [
       "Economia de energia",
       "Design moderno e personalizado",
       "Tecnologia LED de qualidade",
-      "Garantia de 2 anos",
+      "Orientação sobre as condições do serviço",
     ],
   },
   {
@@ -91,7 +90,7 @@ const servicesDetail = [
     fullDesc:
       "Análise e otimização de sistemas elétricos para redução de consumo e custos operacionais.",
     benefits: [
-      "Redução de até 30% no consumo",
+      "Avaliação do consumo e da instalação",
       "Análise térmica infravermelha",
       "Relatório de eficiência",
       "Implementação de melhorias",
@@ -108,9 +107,12 @@ export default function Services() {
         {/* Hero Section */}
         <section className="bg-gradient-to-r from-primary to-primary/80 text-primary-foreground py-16 md:py-24">
           <div className="container">
-            <h1 className="text-4xl md:text-5xl font-bold mb-6">Nossos Serviços</h1>
+            <h1 className="text-4xl md:text-5xl font-bold mb-6">
+              Nossos Serviços
+            </h1>
             <p className="text-lg md:text-xl opacity-95 max-w-2xl">
-              Soluções técnicas completas em elétrica e eletrônica para atender todas as suas necessidades.
+              Soluções técnicas completas em elétrica e eletrônica para atender
+              todas as suas necessidades.
             </p>
           </div>
         </section>
@@ -119,7 +121,7 @@ export default function Services() {
         <section className="py-16 md:py-24">
           <div className="container">
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {servicesDetail.map((service) => {
+              {servicesDetail.map(service => {
                 const Icon = service.icon;
                 return (
                   <div
@@ -131,16 +133,23 @@ export default function Services() {
                       <h3 className="text-2xl font-bold text-primary mb-2">
                         {service.title}
                       </h3>
-                      <p className="text-muted-foreground">{service.shortDesc}</p>
+                      <p className="text-muted-foreground">
+                        {service.shortDesc}
+                      </p>
                     </div>
 
                     <div className="p-6">
                       <p className="text-foreground mb-6">{service.fullDesc}</p>
 
-                      <h4 className="font-bold text-primary mb-3">Benefícios:</h4>
+                      <h4 className="font-bold text-primary mb-3">
+                        Benefícios:
+                      </h4>
                       <ul className="space-y-2 mb-6">
                         {service.benefits.map((benefit, idx) => (
-                          <li key={idx} className="flex items-start gap-2 text-sm">
+                          <li
+                            key={idx}
+                            className="flex items-start gap-2 text-sm"
+                          >
                             <CheckCircle
                               size={16}
                               className="text-accent flex-shrink-0 mt-1"
@@ -214,7 +223,8 @@ export default function Services() {
               Precisa de Um Serviço Específico?
             </h2>
             <p className="text-lg mb-8 max-w-2xl mx-auto opacity-95">
-              Entre em contato conosco para uma consulta gratuita e descubra a melhor solução para seu projeto.
+              Entre em contato conosco para descrever sua necessidade e avaliar
+              a melhor solução para seu projeto.
             </p>
             <Link href="/contato">
               <Button

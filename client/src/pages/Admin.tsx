@@ -20,7 +20,7 @@ export default function Admin() {
       toast.success("Arquivo enviado com sucesso!");
       setSelectedFile(null);
     },
-    onError: (error) => {
+    onError: error => {
       toast.error(`Erro ao enviar arquivo: ${error.message}`);
     },
   });
@@ -29,7 +29,7 @@ export default function Admin() {
     enabled: isAuthenticated,
   });
 
-  if (!isAuthenticated) {
+  if (!isAuthenticated || !user) {
     return (
       <div className="min-h-screen flex flex-col bg-background">
         <Header />
@@ -72,17 +72,17 @@ export default function Admin() {
     setUploading(true);
     try {
       const formData = new FormData();
-      formData.append('file', file);
-      formData.append('userId', user.id.toString());
+      formData.append("file", file);
+      formData.append("userId", user.id.toString());
 
-      const response = await fetch('/api/upload', {
-        method: 'POST',
+      const response = await fetch("/api/upload", {
+        method: "POST",
         body: formData,
-        credentials: 'include',
+        credentials: "include",
       });
 
       if (!response.ok) {
-        throw new Error('Upload failed');
+        throw new Error("Upload failed");
       }
 
       const { url, key } = await response.json();
@@ -121,9 +121,7 @@ export default function Admin() {
               <Card className="p-8">
                 <div className="border-2 border-dashed border-border rounded-lg p-8 text-center">
                   <Upload className="w-12 h-12 text-accent mx-auto mb-4" />
-                  <h3 className="text-lg font-bold mb-2">
-                    Enviar Arquivo
-                  </h3>
+                  <h3 className="text-lg font-bold mb-2">Enviar Arquivo</h3>
                   <p className="text-muted-foreground mb-6">
                     Clique para selecionar um arquivo ou arraste e solte aqui
                   </p>
@@ -135,10 +133,7 @@ export default function Admin() {
                     id="file-input"
                   />
                   <label htmlFor="file-input" className="inline-block">
-                    <Button
-                      disabled={uploading}
-                      className="cursor-pointer"
-                    >
+                    <Button disabled={uploading} className="cursor-pointer">
                       {uploading ? "Enviando..." : "Selecionar Arquivo"}
                     </Button>
                   </label>
@@ -155,14 +150,20 @@ export default function Admin() {
                 <p className="text-muted-foreground">Carregando...</p>
               ) : filesQuery.data && filesQuery.data.length > 0 ? (
                 <div className="space-y-4">
-                  {filesQuery.data.map((file) => (
-                    <Card key={file.id} className="p-6 flex items-center justify-between">
+                  {filesQuery.data.map(file => (
+                    <Card
+                      key={file.id}
+                      className="p-6 flex items-center justify-between"
+                    >
                       <div className="flex items-center gap-4">
                         <FileText className="w-8 h-8 text-accent" />
                         <div>
                           <h3 className="font-bold">{file.fileName}</h3>
                           <p className="text-sm text-muted-foreground">
-                            {(file.fileSize ? file.fileSize / 1024 : 0).toFixed(2)} KB
+                            {(file.fileSize ? file.fileSize / 1024 : 0).toFixed(
+                              2
+                            )}{" "}
+                            KB
                           </p>
                         </div>
                       </div>

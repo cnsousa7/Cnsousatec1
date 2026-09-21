@@ -1,16 +1,16 @@
 import { useState } from "react";
-import { Menu, X, Phone, Mail, MessageCircle } from "lucide-react";
+import { Menu, X, Phone, MessageCircle } from "lucide-react";
 import { Link } from "wouter";
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const navItems = [
-    { label: "Home", href: "/" },
+    { label: "Início", href: "/" },
     { label: "Serviços", href: "/servicos" },
     { label: "Portfólio", href: "/portfolio" },
     { label: "Depoimentos", href: "/depoimentos" },
-    { label: "Sobre Nós", href: "/sobre" },
+    { label: "Sobre", href: "/sobre" },
     { label: "Contato", href: "/contato" },
   ];
 
@@ -22,20 +22,28 @@ export default function Header() {
           <Link href="/">
             <div className="flex items-center gap-3 cursor-pointer">
               <img
-                src="logo-cnsousatec-glow.png"
+                src="/logo-cnsousatec-glow.png"
                 alt="CNSOUSATEC Logo"
+                width="56"
+                height="56"
+                decoding="async"
                 className="h-14 w-auto rounded-lg shadow-md"
               />
               <div className="hidden sm:block">
                 <h1 className="text-primary font-bold text-lg">CNSOUSATEC</h1>
-                <p className="text-xs text-muted-foreground">Soluções Técnicas</p>
+                <p className="text-xs text-muted-foreground">
+                  Soluções Técnicas
+                </p>
               </div>
             </div>
           </Link>
 
           {/* Desktop Navigation */}
-          <nav className="hidden lg:flex items-center gap-8">
-            {navItems.map((item) => (
+          <nav
+            aria-label="Navegação principal"
+            className="hidden lg:flex items-center gap-8"
+          >
+            {navItems.map(item => (
               <Link key={item.href} href={item.href}>
                 <a className="text-foreground hover:text-primary transition-colors font-medium">
                   {item.label}
@@ -58,8 +66,12 @@ export default function Header() {
 
           {/* Mobile Menu Button */}
           <button
+            type="button"
+            aria-expanded={isMenuOpen}
+            aria-controls="mobile-navigation"
+            aria-label={isMenuOpen ? "Fechar menu" : "Abrir menu"}
             onClick={() => setIsMenuOpen(!isMenuOpen)}
-            className="lg:hidden p-2 hover:bg-muted rounded-lg transition-colors"
+            className="lg:hidden p-2 hover:bg-muted rounded-lg transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
           >
             {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
@@ -67,8 +79,12 @@ export default function Header() {
 
         {/* Mobile Navigation */}
         {isMenuOpen && (
-          <nav className="lg:hidden pb-4 border-t border-border">
-            {navItems.map((item) => (
+          <nav
+            id="mobile-navigation"
+            aria-label="Navegação móvel"
+            className="lg:hidden pb-4 border-t border-border"
+          >
+            {navItems.map(item => (
               <Link key={item.href} href={item.href}>
                 <a
                   className="block py-2 px-4 text-foreground hover:bg-muted transition-colors"
@@ -93,11 +109,12 @@ export default function Header() {
 
       {/* WhatsApp Floating Button */}
       <a
-        href="https://wa.me/5561992743428?text=Olá%2C%20gostaria%20de%20um%20orçamento%20para%20serviços%20elétricos."
+        href="https://wa.me/5561992743428?text=Olá%2C%20gostaria%20de%20um%20orçamento%20para%20serviços%20técnicos."
         target="_blank"
         rel="noopener noreferrer"
-        className="fixed bottom-6 right-6 bg-green-500 hover:bg-green-600 text-white rounded-full p-4 shadow-lg transition-all hover:scale-110 z-40"
+        aria-label="Fale conosco no WhatsApp"
         title="Fale conosco no WhatsApp"
+        className="fixed bottom-6 right-6 bg-green-600 hover:bg-green-700 text-white rounded-full p-4 shadow-lg transition-all hover:scale-110 z-40 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-green-300"
       >
         <MessageCircle size={24} />
       </a>

@@ -2,7 +2,7 @@ import { useState } from "react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
-import { Mail, Phone, MapPin, Clock } from "lucide-react";
+import { Mail, Phone, MapPin, MessageCircle } from "lucide-react";
 
 export default function Contact() {
   const [formData, setFormData] = useState({
@@ -16,16 +16,22 @@ export default function Contact() {
   const [submitted, setSubmitted] = useState(false);
 
   const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
+    e: React.ChangeEvent<
+      HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
+    >
   ) => {
     const { name, value } = e.target;
-    setFormData((prev) => ({ ...prev, [name]: value }));
+    setFormData(prev => ({ ...prev, [name]: value }));
   };
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Simulate form submission
-    console.log("Form submitted:", formData);
+    const text = `Olá, sou ${formData.name}. Telefone: ${formData.phone}. E-mail: ${formData.email}. Serviço: ${formData.service}. Mensagem: ${formData.message}`;
+    window.open(
+      `https://wa.me/5561992743428?text=${encodeURIComponent(text)}`,
+      "_blank",
+      "noopener,noreferrer"
+    );
     setSubmitted(true);
     setTimeout(() => {
       setSubmitted(false);
@@ -41,9 +47,12 @@ export default function Contact() {
         {/* Hero Section */}
         <section className="bg-gradient-to-r from-primary to-primary/80 text-primary-foreground py-16 md:py-24">
           <div className="container">
-            <h1 className="text-4xl md:text-5xl font-bold mb-6">Entre em Contato</h1>
+            <h1 className="text-4xl md:text-5xl font-bold mb-6">
+              Entre em Contato
+            </h1>
             <p className="text-lg md:text-xl opacity-95 max-w-2xl">
-              Estamos prontos para ajudar com suas necessidades. Fale conosco hoje mesmo!
+              Estamos prontos para ajudar com suas necessidades. Fale conosco
+              hoje mesmo!
             </p>
           </div>
         </section>
@@ -55,10 +64,12 @@ export default function Contact() {
               {/* Contact Info Cards */}
               <div className="bg-white rounded-lg shadow-md border border-border p-6">
                 <Phone className="w-8 h-8 text-accent mb-4" />
-                <h3 className="text-xl font-bold text-primary mb-2">Telefone</h3>
+                <h3 className="text-xl font-bold text-primary mb-2">
+                  Telefone
+                </h3>
                 <p className="text-muted-foreground mb-2">(61) 99274-3428</p>
                 <p className="text-sm text-muted-foreground">
-                  Disponível de segunda a sexta, 8h às 18h
+                  Fale diretamente pelo telefone ou WhatsApp.
                 </p>
               </div>
 
@@ -69,16 +80,20 @@ export default function Contact() {
                   Cnsousatec@gmail.com
                 </p>
                 <p className="text-sm text-muted-foreground">
-                  Responderemos em até 24 horas
+                  Envie sua solicitação e descreva o serviço necessário.
                 </p>
               </div>
 
               <div className="bg-white rounded-lg shadow-md border border-border p-6">
                 <MapPin className="w-8 h-8 text-accent mb-4" />
-                <h3 className="text-xl font-bold text-primary mb-2">Localização</h3>
-                <p className="text-muted-foreground mb-2">Brasília, DF - Brasil</p>
+                <h3 className="text-xl font-bold text-primary mb-2">
+                  Localização
+                </h3>
+                <p className="text-muted-foreground mb-2">
+                  Brasília, DF - Brasil
+                </p>
                 <p className="text-sm text-muted-foreground">
-                  Atendimento em todo o Brasil
+                  Brasília, Distrito Federal e região informada pela empresa.
                 </p>
               </div>
             </div>
@@ -94,10 +109,10 @@ export default function Contact() {
                 {submitted ? (
                   <div className="bg-green-50 border border-green-200 rounded-lg p-6 text-center">
                     <p className="text-green-800 font-medium">
-                      ✓ Mensagem enviada com sucesso!
+                      ✓ Solicitação preparada para o WhatsApp.
                     </p>
                     <p className="text-green-700 text-sm mt-2">
-                      Entraremos em contato em breve.
+                      Verifique a nova aba para concluir o envio da mensagem.
                     </p>
                   </div>
                 ) : (
@@ -159,11 +174,15 @@ export default function Contact() {
                         className="w-full px-4 py-2 border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-accent"
                       >
                         <option value="">Selecione um serviço</option>
-                        <option value="Painéis Elétricos">Painéis Elétricos</option>
+                        <option value="Painéis Elétricos">
+                          Painéis Elétricos
+                        </option>
                         <option value="Manutenção Industrial">
                           Manutenção Industrial
                         </option>
-                        <option value="Laudos Técnicos">Laudos Técnicos</option>
+                        <option value="Manutenção Hidráulica">
+                          Manutenção Hidráulica
+                        </option>
                         <option value="Iluminação Residencial">
                           Iluminação Residencial
                         </option>
@@ -208,48 +227,38 @@ export default function Contact() {
                   rel="noopener noreferrer"
                   className="block bg-gradient-to-br from-green-400 to-green-600 text-white rounded-lg shadow-lg p-8 hover:shadow-xl transition-shadow"
                 >
-                  <h3 className="text-2xl font-bold mb-4">Fale Conosco no WhatsApp</h3>
+                  <h3 className="text-2xl font-bold mb-4">
+                    Fale Conosco no WhatsApp
+                  </h3>
                   <p className="mb-6 opacity-95">
-                    Resposta rápida e atendimento personalizado. Clique para enviar uma mensagem!
+                    Resposta rápida e atendimento personalizado. Clique para
+                    enviar uma mensagem!
                   </p>
-                  <Button
-                    className="bg-white text-green-600 hover:bg-gray-100 font-bold w-full"
-                  >
+                  <Button className="bg-white text-green-600 hover:bg-gray-100 font-bold w-full">
                     Abrir WhatsApp
                   </Button>
                 </a>
 
-                {/* Hours Card */}
+                {/* Availability Card */}
                 <div className="bg-white rounded-lg shadow-md border border-border p-6">
-                  <Clock className="w-8 h-8 text-accent mb-4" />
+                  <MessageCircle className="w-8 h-8 text-accent mb-4" />
                   <h3 className="text-xl font-bold text-primary mb-4">
-                    Horário de Atendimento
+                    Atendimento
                   </h3>
-                  <div className="space-y-2 text-sm text-muted-foreground">
-                    <p>
-                      <span className="font-medium text-foreground">
-                        Segunda a Sexta:
-                      </span>{" "}
-                      8h às 18h
-                    </p>
-                    <p>
-                      <span className="font-medium text-foreground">Sábado:</span>{" "}
-                      8h às 12h
-                    </p>
-                    <p>
-                      <span className="font-medium text-foreground">Domingo:</span>{" "}
-                      Fechado
-                    </p>
-                  </div>
+                  <p className="text-sm text-muted-foreground">
+                    A comunicação atual informa atendimento técnico 24h.
+                    Confirme a disponibilidade e as condições para o seu caso.
+                  </p>
                 </div>
 
                 {/* Emergency Card */}
                 <div className="bg-accent/10 rounded-lg border border-accent p-6">
                   <h3 className="text-lg font-bold text-primary mb-2">
-                    Emergências 24/7
+                    Atendimento emergencial
                   </h3>
                   <p className="text-sm text-muted-foreground mb-4">
-                    Para situações de emergência, ligue para nosso número de atendimento:
+                    Para situações de emergência, ligue para nosso número de
+                    atendimento:
                   </p>
                   <a
                     href="tel:+5561992743428"
